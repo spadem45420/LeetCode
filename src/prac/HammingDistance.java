@@ -1,19 +1,41 @@
 package prac;
 
 /**
+ * The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+
+	Given two integers x and y, calculate the Hamming distance.
+	
+	Note:
+	0 â‰¤ x, y < 231.
+	
+	Example:
+	
+	Input: x = 1, y = 4
+	
+	Output: 2
+	
+	Explanation:
+	1   (0 0 0 1)
+	4   (0 1 0 0)
+	       â†‘   â†‘
+
+	The above arrows point to positions where the corresponding bits are different.
+ */
+
+/**
  * 
- * ¨â­Óµ¥ªø¦r²Å¦ê¤§¶¡ªºº~©ú¶ZÂ÷¡]­^»y¡GHamming distance¡^¬O¨â­Ó¦r²Å¦ê¹ïÀ³¦ì¸mªº¤£¦P¦r²Åªº­Ó¼Æ
+ * å…©å€‹ç­‰é•·å­—ç¬¦ä¸²ä¹‹é–“çš„æ¼¢æ˜Žè·é›¢ï¼ˆè‹±èªžï¼šHamming distanceï¼‰æ˜¯å…©å€‹å­—ç¬¦ä¸²å°æ‡‰ä½ç½®çš„ä¸åŒå­—ç¬¦çš„å€‹æ•¸
  *
  * ex:
- * 1011101»P1001001¤§¶¡ªºº~©ú¶ZÂ÷¬O2¡C
- * 2143896»P2233796¤§¶¡ªºº~©ú¶ZÂ÷¬O3¡C
- * "toned"»P"roses"¤§¶¡ªºº~©ú¶ZÂ÷¬O3¡C
+ * 1011101èˆ‡1001001ä¹‹é–“çš„æ¼¢æ˜Žè·é›¢æ˜¯2ã€‚
+ * 2143896èˆ‡2233796ä¹‹é–“çš„æ¼¢æ˜Žè·é›¢æ˜¯3ã€‚
+ * "toned"èˆ‡"roses"ä¹‹é–“çš„æ¼¢æ˜Žè·é›¢æ˜¯3ã€‚
  */
 public class HammingDistance {
 
 	public static void main(String[] args) {
 		
-		// &ªº¦Û¥Ñ½m²ß
+		// &çš„è‡ªç”±ç·´ç¿’
 		//000010
 		//000111
 //		System.out.println(2&7);
@@ -36,14 +58,14 @@ public class HammingDistance {
 //		System.out.println("solution2 = " + solution2);
 //		System.out.println("solution3 = " + solution3);
 		
-		// ¹ê§@HammingDistance
+		// å¯¦ä½œHammingDistance
 		// x= 5=0101
 		// y=10=1010
 		System.out.println(new HammingDistance().calculate(5, 10));
 		System.out.println(new HammingDistance().calculate2(5, 10));
 	}
 	
-	// §PÂ_³Ì¥kÃäªº­È¬O¤£¬O1¡A¨C¦¸³£¦V¥k²¾1¦ì¡Aª½¨ìÅÜ¦¨0¬°¤î
+	// åˆ¤æ–·æœ€å³é‚Šçš„å€¼æ˜¯ä¸æ˜¯1ï¼Œæ¯æ¬¡éƒ½å‘å³ç§»1ä½ï¼Œç›´åˆ°è®Šæˆ0ç‚ºæ­¢
 	public int solution1(int i) {
 		int count = 0;
 		
@@ -51,7 +73,7 @@ public class HammingDistance {
 			// ex:
 			// i = 000100
 			// 1 = 000001
-			// ¦]¬°1³Ì¥kÃä¬O1¡A©Ò¥H¥u­ni&1¤§«á¤£¬O1ªí¥Üi³Ì¥kÃä¬°0
+			// å› ç‚º1æœ€å³é‚Šæ˜¯1ï¼Œæ‰€ä»¥åªè¦i&1ä¹‹å¾Œä¸æ˜¯1è¡¨ç¤ºiæœ€å³é‚Šç‚º0
 			if ((i & 1) >= 1) {
 				count++;
 			}
@@ -60,7 +82,7 @@ public class HammingDistance {
 		return count;
 	}
 	
-	// ¨C¦¸³£±Nflag¦V¥ª²¾1¦ì¡A°µ&¹Bºâ¬Ý¬O¤£¬O1¡Aª½¨ìÅÜ¦¨0¬°¤î
+	// æ¯æ¬¡éƒ½å°‡flagå‘å·¦ç§»1ä½ï¼Œåš&é‹ç®—çœ‹æ˜¯ä¸æ˜¯1ï¼Œç›´åˆ°è®Šæˆ0ç‚ºæ­¢
 	public int solution2(int i) {
 		int count = 0;
 		int flag = 1;
@@ -69,7 +91,7 @@ public class HammingDistance {
 			// ex:
 			// i    = 000010
 			// flag = 000001
-			// flag¤£Â_¦a¦V¥ª²¾°µ&¹Bºâ¡A­Y¦³&¬°1ªí¥Ü²¾¨ìªº¦ì¸m¦³1
+			// flagä¸æ–·åœ°å‘å·¦ç§»åš&é‹ç®—ï¼Œè‹¥æœ‰&ç‚º1è¡¨ç¤ºç§»åˆ°çš„ä½ç½®æœ‰1
 			if ((i & flag) >= 1) {
 				count++;
 				System.out.println("count = " + count);
@@ -80,14 +102,14 @@ public class HammingDistance {
 		return count;
 	}
 	
-	// ¦pªG¤@­Ó¾ã¼Æ­Y¤£¬°0¡A¨º¤G¶i¨î®É¥²¦³¤@¦ì¬O1
-	// ±N³o­Ó¾ã¼Æ´î¥h1¡A¨º¸Ó¼Æ¤G¶i¨î³Ì¥kÃäªº1«h·|ÅÜ¦¨0
+	// å¦‚æžœä¸€å€‹æ•´æ•¸è‹¥ä¸ç‚º0ï¼Œé‚£äºŒé€²åˆ¶æ™‚å¿…æœ‰ä¸€ä½æ˜¯1
+	// å°‡é€™å€‹æ•´æ•¸æ¸›åŽ»1ï¼Œé‚£è©²æ•¸äºŒé€²åˆ¶æœ€å³é‚Šçš„1å‰‡æœƒè®Šæˆ0
 	// ex: 8-1=7
 	// 8 -> 001000
 	// 7 -> 000111
-	// ¤]·|µo²{´î1¤§«á¡A³Ì¥kÃäªº1¶}©l©Ò¦³ªº¦ì¼Æ³£ÅÜ¬Û¤Ï¤F(0ÅÜ¦¨1)
-	// ¤]´N¬O»¡¡A¤@­Ó¾ã¼Æ´î¥h1¡A¦b¸ò­ì¾ã¼Æ°µ&¹Bºâ¡A·|±N³Ì¥kÃäªº1ÅÜ¦¨0
-	// ¤@­Ó¾ã¼Æªº¤G¶i¨î¦³¦h¤Ö1¡A«h¥i¥H³o¼Ë¾Þ§@¦h¤Ö¦¸
+	// ä¹Ÿæœƒç™¼ç¾æ¸›1ä¹‹å¾Œï¼Œæœ€å³é‚Šçš„1é–‹å§‹æ‰€æœ‰çš„ä½æ•¸éƒ½è®Šç›¸åäº†(0è®Šæˆ1)
+	// ä¹Ÿå°±æ˜¯èªªï¼Œä¸€å€‹æ•´æ•¸æ¸›åŽ»1ï¼Œåœ¨è·ŸåŽŸæ•´æ•¸åš&é‹ç®—ï¼Œæœƒå°‡æœ€å³é‚Šçš„1è®Šæˆ0
+	// ä¸€å€‹æ•´æ•¸çš„äºŒé€²åˆ¶æœ‰å¤šå°‘1ï¼Œå‰‡å¯ä»¥é€™æ¨£æ“ä½œå¤šå°‘æ¬¡
 	public int solution3(int i) {
 		int count = 0;
 		while (i >= 1) {
